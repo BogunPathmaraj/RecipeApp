@@ -1,5 +1,5 @@
  import { useState, useRef, useEffect } from "react";
- import Card from 'react-bootstrap/Card'
+ import {Card} from 'react-bootstrap'
  import Button from 'react-bootstrap/Button'
 
 const Recipes = ({recipe}) => {
@@ -52,17 +52,18 @@ console.log(list)
      
      return(
       
-    console.log('data object is', list),
-      console.log('data is here', dahit), 
-    <div style={{ width: '18rem' }} key={i}>
+ 
+    <Card style={{ width: '18rem' }} key={i}>
+  <Card.Img variant="top" src="holder.js/100px180" />
+  <Card.Body>
   
-  
-   <p> {dahit.recipe.label}</p> 
-    <p>
+   <Card.Title> {dahit.recipe.label}</Card.Title> 
+    <Card.Text>
       {dahit.recipe.ingredientLines} 
-    </p>
-     
-</div>
+    </Card.Text>
+    <Button variant="primary">Go somewhere</Button>
+  </Card.Body>
+</Card>
      )
    
 })  
