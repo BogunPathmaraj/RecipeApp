@@ -7,6 +7,7 @@ const AddFoods = ({ingredient}) => {
     
     const [fridge, setFridge] = useState([])
     const isFirstRun =useRef(true);
+     
     
     
     AddFoods.propTypes ={ingredient: PropTypes.string}
@@ -16,9 +17,15 @@ useEffect(
   () => {
   if (isFirstRun.current){
     isFirstRun.current=false; 
+     
+    
+     
     return;}
 
   setFridge(fridge => [...fridge,(ingredient)])
+  console.log('this is the fridge state: ' + fridge.length)
+  console.log('this is the ingredient prop: ' + ingredient)
+  
 }, [ingredient]
           )
 
@@ -28,20 +35,27 @@ useEffect(
    const deleteIngredient = (ingredient) => {
      
     setFridge( fridge.filter((prevFridge) => prevFridge !== ingredient))
-      
-     return(fridge)
+     
      }
     
+     
     return  ( 
       
   <div   > 
   { 
   
-  fridge.map((ingredient, index) => 
   
+    fridge.map((ingredient, index) => {
+       
+      return(
     <div key={index} className='box2' >
     <p> {ingredient}<FaTimes style={{color: 'red', cursor: 'pointer', fontSize:"medium"}} onClick={()=> {deleteIngredient(ingredient)}}/> </p> 
-    </div>)   
+    </div>)
+    
+  })   
+
+ 
+ 
     
   }  
   <Recipes recipe={fridge}/>  

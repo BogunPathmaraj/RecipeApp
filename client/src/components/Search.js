@@ -1,5 +1,5 @@
 import Data from '../Food.json' 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {FaPlus} from 'react-icons/fa'
 import Alert from 'react-bootstrap/Alert'
 
@@ -9,13 +9,24 @@ import AddFoods from './AddFoods.js'
  const Search = () => {
     const [query, setQuery] = useState('')
 
-    const [recipe, setRecipe] = useState('')
+    const [recipe, setRecipe] = useState('nothing')
     
+    useEffect(
+      () => {
+       
+      console.log(recipe)
+       
+      return;
+    }, [])
+    
+
      const addIngredients = (food) => {
          return(  
-      setRecipe(food)
+      setRecipe(food),
+      console.log("this is the food object" + JSON.stringify(recipe)),
+      console.log("this is the food object" + JSON.stringify(food))
      // <Alert variant='success' show='true'><p>Food Add!</p></Alert>
-     
+     // why is my addIngredients buffering
          )     
     }
   
@@ -45,8 +56,8 @@ return (
            
         
     }
-       
-       <AddFoods ingredient ={recipe.name}   />
+        
+       <AddFoods ingredient ={recipe.name}/>
 </div>
 
     )

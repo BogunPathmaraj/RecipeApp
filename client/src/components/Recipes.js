@@ -26,6 +26,7 @@ const sendApiRequest = async ()=>{
 const apiId= 'feab01b2'
 const apiKey = '816e602b93ea221759b2671304cb874e'
 const food = menu
+console.log(food)
 const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=${apiId}&app_key=${apiKey}&q=${food}`)
 const data = await response.json()
 const newData = JSON.stringify(data.hits)
@@ -53,15 +54,16 @@ console.log(list)
      return(
       
  
-    <Card style={{ width: '18rem' }} key={i}>
-  <Card.Img variant="top" src="holder.js/100px180" />
+    <Card style={{ width: '18rem' }} key={i} className='box3'>
+  <Card.Img variant="top" src={dahit.recipe.image} />
   <Card.Body>
   
-   <Card.Title> {dahit.recipe.label}</Card.Title> 
+   <Card.Title><strong><i>  {dahit.recipe.label}</i></strong></Card.Title> 
     <Card.Text>
-      {dahit.recipe.ingredientLines} 
+       <p><strong> Meal Type:</strong> {dahit.recipe.mealType}</p>
+       <p><strong>Calories:</strong> {dahit.recipe.calories}</p>
     </Card.Text>
-    <Button variant="primary">Go somewhere</Button>
+    <Button variant="primary">Let's Make This Recipe!</Button>
   </Card.Body>
 </Card>
      )

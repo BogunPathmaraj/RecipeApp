@@ -9,7 +9,7 @@ import Search from "./components/Search";
   
   <div className='container'> 
   <Header title = 'Whats in my Fridge'/>
-  <div> <Search/></div>
+  <div> <Search  /></div>
     
   </div>
   )
