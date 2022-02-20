@@ -19,12 +19,11 @@ import AddFoods from './AddFoods.js'
       return;
     }, [])
     
-
-     const addIngredients = (food) => {
+    //Function that adds ingredients to the setRecipe state
+     const addIngredients = (food,index) => {
          return(  
-      setRecipe(food),
-      console.log("this is the food object" + JSON.stringify(recipe)),
-      console.log("this is the food object" + JSON.stringify(food))
+      setRecipe(food,index) 
+     
      // <Alert variant='success' show='true'><p>Food Add!</p></Alert>
      // why is my addIngredients buffering
          )     
@@ -56,7 +55,7 @@ return (
            
         
     }
-        
+      
        <AddFoods ingredient ={recipe.name}/>
 </div>
 
