@@ -1,6 +1,6 @@
  import { useState, useRef, useEffect } from "react";
  import {Card} from 'react-bootstrap'
- import Button from 'react-bootstrap/Button'
+ 
 
 const Recipes = ({recipe}) => {
   
@@ -32,7 +32,7 @@ const food = recipe
 const response = await fetch(`https://api.edamam.com/api/recipes/v2?type=public&app_id=${apiId}&app_key=${apiKey}&q=${food}`)
 console.log(response)
 const data = await response.json()
-const newData = JSON.stringify(data.hits)
+ 
 //const newData = JSON.stringify(data)
 //const parData = JSON.parse(newData)
 //const newData = JSON.stringify(data.hits)
@@ -48,7 +48,8 @@ console.log(list)
 
   return( 
    
-<ol>     
+<div className='box3'> 
+     
 {   
  
   Object.values(list).map((dahit,i)  => {
@@ -56,24 +57,25 @@ console.log(list)
      
      return(
       
- 
-    <Card style={{ width: '18rem' }} key={i} className='box3'>
-  <Card.Img variant="top" src={dahit.recipe.image} />
+ <div key={i}  > 
+    <Card style={{ width: '18rem'}} className='card'>
+  <Card.Img variant="top" src={dahit.recipe.image}  />
   <Card.Body>
   
-   <Card.Title><strong><i>  {dahit.recipe.label}</i></strong></Card.Title> 
+   <Card.Title ><strong><i>  {dahit.recipe.label}</i></strong></Card.Title> 
     <Card.Text>
-       <p><strong> Meal Type:</strong> {dahit.recipe.mealType}</p>
-       <p><strong>Calories:</strong> {dahit.recipe.calories}</p>
+       <p className="line1"><strong> Meal Type:</strong> {dahit.recipe.mealType}</p>
+       <p className="line2"><strong>Calories:</strong> {dahit.recipe.calories}</p>
     </Card.Text>
-    <Button variant="primary">Let's Make This Recipe!</Button>
+    <a className='recipe' href={dahit.recipe.url} role="button" target="_blank">Let's Make This Recipe!</a>
   </Card.Body>
 </Card>
+ </div>
      )
    
 })  
   }
-</ol>
+</div>
   )
  
 };
